@@ -38,6 +38,7 @@ module.exports = defineConfig({
   env: {
     USER_EMAIL: process.env.CYPRESS_USER_EMAIL,
     USER_PASSWORD: process.env.CYPRESS_USER_PASSWORD,
+    TRELLO_API_URL: process.env.TRELLO_API_URL,
   },
 
   e2e: {
