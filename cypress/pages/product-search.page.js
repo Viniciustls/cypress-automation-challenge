@@ -1,20 +1,20 @@
 class ProductSearchPage {
-  visit() {
-    cy.visit('/products');
-  }
-
   searchProduct(productName) {
     cy.get('#search_product')
+      .should('be.visible')
       .clear()
       .type(productName);
 
-    cy.get('#submit_search').click();
+    cy.get('#submit_search')
+      .should('be.visible')
+      .click();
   }
 
-  validateSearchResults(productName) {
-    cy.contains('.productinfo', productName, { matchCase: false })
-      .should('be.visible');
-  }
+  validateProduct(productName) {
+    cy.get('.productinfo.text-center p')
+      .should('be.visible')
+      .and('contain.text', productName);
+  } 
 }
 
 module.exports = ProductSearchPage;

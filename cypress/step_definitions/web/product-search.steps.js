@@ -1,4 +1,7 @@
-const { When, Then } = require('@badeball/cypress-cucumber-preprocessor');
+const {
+  When,
+  Then,
+} = require('@badeball/cypress-cucumber-preprocessor');
 
 const ProductSearchPage = require('../../pages/product-search.page');
 
@@ -8,6 +11,6 @@ When('busco pelo produto {string}', (productName) => {
   productSearchPage.searchProduct(productName);
 });
 
-Then('devo visualizar produtos relacionados a {string}', (productName) => {
-  productSearchPage.validateSearchResults(productName);
+Then('devo visualizar o produto {string} nos resultados', (productName) => {
+  productSearchPage.validateProduct(productName);
 });

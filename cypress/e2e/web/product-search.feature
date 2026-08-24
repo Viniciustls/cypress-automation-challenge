@@ -4,7 +4,11 @@ Feature: Busca de produtos
   Quero buscar produtos
   Para encontrar um produto específico
 
-  Scenario: Buscar produto pelo nome
+  Scenario Outline: Buscar produto pelo nome
     Given que estou na página de produtos
-    When busco pelo produto "T-shirt"
-    Then devo visualizar produtos relacionados a "T-shirt"
+    When busco pelo produto "<produto>"
+    Then devo visualizar o produto "<produto>" nos resultados
+
+    Examples:
+      | produto                     |
+      | Pure Cotton V-Neck T-Shirt |
