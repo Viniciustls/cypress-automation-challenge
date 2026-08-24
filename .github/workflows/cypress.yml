@@ -28,7 +28,18 @@ jobs:
       - name: Run Cypress tests
         run: npx cypress run
         env:
-            TRELLO_API_URL: ${{ vars.TRELLO_API_URL }}
-            CYPRESS_BASE_URL: ${{ vars.CYPRESS_BASE_URL }}
-            CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
-            CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
+          TRELLO_API_URL: ${{ vars.TRELLO_API_URL }}
+          CYPRESS_BASE_URL: ${{ vars.CYPRESS_BASE_URL }}
+          CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
+          CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
+
+      - name: Generate Allure Report
+        if: always()
+        run: npx allure generate ./allure-results -o ./allure-report --clean
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
