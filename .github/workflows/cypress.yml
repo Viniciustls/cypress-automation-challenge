@@ -30,3 +30,5 @@ jobs:
         env:
             TRELLO_API_URL: ${{ vars.TRELLO_API_URL }}
             CYPRESS_BASE_URL: ${{ vars.CYPRESS_BASE_URL }}
+            CYPRESS_USER_EMAIL: ${{ vars.CYPRESS_USER_EMAIL }}
+            CYPRESS_USER_PASSWORD: ${{ vars.CYPRESS_USER_PASSWORD }}
