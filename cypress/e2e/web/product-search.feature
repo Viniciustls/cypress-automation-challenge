@@ -11,4 +11,4 @@ Feature: Busca de produtos
 
     Examples:
       | produto                     |
-      | Pure Cotton V-Neck T-Shirt |
+      | Pure Cotton V-Neck T-Shirt  |

@@ -1,23 +1,28 @@
 class CartPage {
   addProductToCart(productName) {
-    cy.contains('.productinfo', productName, { matchCase: false })
+    cy.contains('.productinfo.text-center p', productName)
+      .filter(':visible')
+      .first()
+      .closest('.single-products')
+      .find('.productinfo .add-to-cart')
       .should('be.visible')
-      .within(() => {
-        cy.get('.add-to-cart').click();
-      });
+      .click();
   }
 
   validateProductAdded() {
-    cy.get('.modal-title')
-      .should('be.visible')
-      .and('contain', 'Added!');
-
-    cy.contains('.modal-body', 'Your product has been added to cart.')
+    cy.contains('.modal-content', 'Your product has been added to cart.')
       .should('be.visible');
   }
 
   viewCart() {
-    cy.get('a[href="/view_cart"]').click();
+    cy.contains('a', 'View Cart')
+      .should('be.visible')
+      .click();
+  }
+
+  validateProductInCart(productName) {
+    cy.contains('td.cart_description a', productName)
+      .should('be.visible');
   }
 }
 
